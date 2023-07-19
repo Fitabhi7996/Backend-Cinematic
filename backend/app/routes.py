@@ -6,12 +6,12 @@ from app import app, mongo
 @app.route("/api/users", methods=["GET"])
 def get_users():
     users = list(mongo.db.users.find())
-    return jsonify(users)
+    return jsonify(json_util.dumps(users))
 
 @app.route("/api/users/<user_id>", methods=["GET"])
 def get_user(user_id):
     user = mongo.db.users.find_one({"_id": user_id})
-    return jsonify(user)
+    return jsonify(json_util.dumps(user))
 
 @app.route("/api/users", methods=["POST"])
 def create_user():
@@ -51,12 +51,12 @@ def delete_user(user_id):
 @app.route("/api/movies", methods=["GET"])
 def get_movies():
     movies = list(mongo.db.movies.find())
-    return jsonify(movies)
+    return jsonify(json_util.dumps(movies))
 
 @app.route("/api/movies/<movie_id>/shows", methods=["GET"])
 def get_movie_shows(movie_id):
     shows = list(mongo.db.shows.find({"movie_id": movie_id}))
-    return jsonify(shows)
+    return jsonify(json_util.dumps(shows))
 
 @app.route("/api/movies", methods=["POST"])
 def create_movie():
@@ -88,12 +88,12 @@ def delete_movie(movie_id):
 @app.route("/api/events", methods=["GET"])
 def get_events():
     events = list(mongo.db.events.find())
-    return jsonify(events)
+    return jsonify(json_util.dumps(events))
 
 @app.route("/api/events/<event_id>/participants", methods=["GET"])
 def get_event_participants(event_id):
     participants = list(mongo.db.participants.find({"event_id": event_id}))
-    return jsonify(participants)
+    return jsonify(json_util.dumps(participants))
 
 @app.route("/api/events", methods=["POST"])
 def create_event():
@@ -125,7 +125,6 @@ def delete_event(event_id):
 @app.route("/api/shows", methods=["GET"])
 def get_shows():
     shows = list(mongo.db.shows.find())
-    return jsonify(shows)
+    return jsonify(json_util.dumps(shows))
 
 # Add more endpoints for show hierarchy as per your requirements
-
