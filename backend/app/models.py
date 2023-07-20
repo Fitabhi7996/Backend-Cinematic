@@ -7,3 +7,5 @@ class User(db.Document):
     membership_type = db.StringField(choices=["Regular", "Premium", "VIP"])
     bio = db.StringField()
     date_of_birth = db.DateField()
+
+# 5de4tAfbQ8drhQoS
