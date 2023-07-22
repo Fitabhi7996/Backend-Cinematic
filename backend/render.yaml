@@ -1,0 +1,7 @@
+version: 1
+services:
+  - name: Cinematic
+    env:
+      - key: PORT
+        value: 8080
+    start_cmd: gunicorn -b 0.0.0.0:$PORT run:app
