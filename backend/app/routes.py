@@ -1,4 +1,4 @@
-from flask import jsonify, request
+from flask import  request
 from bson import json_util
 from app import app, mongo
 
